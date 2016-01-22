@@ -41,7 +41,7 @@ Once you have your code, instantiate the XboxVideo client.  The following exampl
 exported to the `XBOX_KEY` environment variable.
 
 ```ruby
-client = XboxClient.new(ENV['XBOX_KEY'])
+client = XboxVideo.new(ENV['XBOX_KEY'])
 ```
 
 Once your client is instantiated, you can start to find videos.  These videos are user generated, and new.  The following will
