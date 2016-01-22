@@ -10,7 +10,7 @@ GAME_LIST = YAML.load_file(File.join(File.dirname(File.expand_path(__FILE__)), '
 
 module XboxVideo
   class Client
-    def initialize(key: )
+    def initialize(key)
       @key = key
     end
 
