@@ -42,7 +42,7 @@ module XboxVideo
 
     def download_random(path: )
       videos = get_videos
-      video = get_videos.sample
+      video = videos.sample
       download(video: video, path: path)
     end
 
