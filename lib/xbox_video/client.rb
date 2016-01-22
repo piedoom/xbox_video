@@ -24,20 +24,22 @@ module XboxVideo
       end
 
       uri = "#{BASE_URL}/public/titles/#{game_id}/clips?qualifier=created&type=userGenerated"
-      puts uri
       response = RestClient.get(uri, :'Authorization' => @key, :'contract_version' => 2)
       parsed = JSON.parse(response)
       videos = create_videos(parsed)
     end
 
-    # download a clip.  Pass in a video object and a pathname.
+    # download a clip.  Pass in a video object and a pathname.  Returns pathname
     def download(video:,path:)
-      path = "#{video.game} #{video.title} #{video.clip_id}"
-      File.open("#{path}.mp4",'wb') do |save_file|
+      path = "#{path}/#{video.game} #{video.title} #{video.clip_id}.mp4"
+      File.open(path,'wb') do |save_file|
         open(video.clips.first.uri, 'rb') do |read_file|
           save_file.write(read_file.read)
         end
       end
+
+      path
+
     end
 
     def download_random(path: )
